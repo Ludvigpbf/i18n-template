@@ -30,7 +30,9 @@ function findPackageJson(startPath) {
 console.log("Reading package.json files...");
 const projectPackageJsonPath = findPackageJson(__dirname);
 const projectPackageJson = require(projectPackageJsonPath);
+console.log(`Project package.json: ${JSON.stringify(projectPackageJson, null, 2)}`);
 const templatePackageJson = require("./package.json");
+console.log(`Template package.json: ${JSON.stringify(templatePackageJson, null, 2)}`);
 
 // Merge the dependencies
 console.log("Merging dependencies...");
@@ -38,6 +40,8 @@ projectPackageJson.dependencies = {
   ...projectPackageJson.dependencies,
   ...templatePackageJson.dependencies,
 };
+
+console.log(`Merged package.json: ${JSON.stringify(projectPackageJson, null, 2)}`);
 
 // Write the merged package.json back to disk
 console.log("Writing merged package.json back to disk...");
