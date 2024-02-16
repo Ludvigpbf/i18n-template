@@ -42,6 +42,12 @@ fs.writeFileSync(projectPackageJsonPath, JSON.stringify(projectPackageJson, null
 console.log("Installing dependencies...");
 execSync('npm install', { stdio: 'inherit', cwd: path.dirname(projectPackageJsonPath) });
 
+// Move the files and folders out of the i18n-template folder
+console.log('Moving files and folders out of the i18n-template folder...');
+fs.readdirSync('./i18n-template').forEach((file) => {
+  fs.renameSync(`./i18n-template/${file}`, `./${file}`);
+});
+
 // Delete the specified files and directories
 console.log("Deleting specified files and directories...");
 [
