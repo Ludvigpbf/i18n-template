@@ -28,7 +28,7 @@ function findPackageJson(startPath) {
 
 // Read the package.json files
 console.log("Reading package.json files...");
-const projectPackageJsonPath = findPackageJson(__dirname);
+const projectPackageJsonPath = findPackageJson(path.dirname(__dirname));
 const projectPackageJson = require(projectPackageJsonPath);
 console.log(`Project package.json: ${JSON.stringify(projectPackageJson, null, 2)}`);
 const templatePackageJson = require("./package.json");
