@@ -25,7 +25,7 @@ function findPackageJson(startPath) {
 console.log("Reading package.json files...");
 const projectPackageJsonPath = findPackageJson(__dirname);
 const projectPackageJson = require(projectPackageJsonPath);
-const templatePackageJson = require("./locales/package.json");
+const templatePackageJson = require("./i18n-template/package.json");
 
 // Merge the dependencies
 console.log("Merging dependencies...");
@@ -51,10 +51,10 @@ fs.readdirSync('./i18n-template').forEach((file) => {
 // Delete the specified files and directories
 console.log("Deleting specified files and directories...");
 [
-  "./locales/package.json",
-  "./locales/package-lock.json",
-  "./locales/node_modules",
-  "./locales/.gitignore",
+  "./package.json",
+  "./package-lock.json",
+  "./node_modules",
+  "./.gitignore",
   "./install.js",
   './i18n-template',
 ].forEach((path) => {
