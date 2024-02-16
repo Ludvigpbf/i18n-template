@@ -4,18 +4,23 @@ const path = require("path");
 
 console.log("Start install i18n-template...");
 
-// Function to find package.json in parent directories
+// Function to find package.json in current or parent directories
 function findPackageJson(startPath) {
   let currentPath = startPath;
 
-  while (currentPath !== "/") {
+  while (true) {
     const packageJsonPath = path.join(currentPath, "package.json");
 
     if (fs.existsSync(packageJsonPath)) {
       return packageJsonPath;
     }
 
-    currentPath = path.dirname(currentPath);
+    const parentPath = path.dirname(currentPath);
+    if (parentPath === currentPath) {
+      break;
+    }
+
+    currentPath = parentPath;
   }
 
   throw new Error("Could not find package.json");
@@ -36,27 +41,28 @@ projectPackageJson.dependencies = {
 
 // Write the merged package.json back to disk
 console.log("Writing merged package.json back to disk...");
-fs.writeFileSync(projectPackageJsonPath, JSON.stringify(projectPackageJson, null, 2));
+fs.writeFileSync(
+  projectPackageJsonPath,
+  JSON.stringify(projectPackageJson, null, 2)
+);
+
+// Move the locales folder out of the i18n-template folder
+console.log("Moving locales folder out of the i18n-template folder...");
+if (fs.existsSync("./i18n-template/locales")) {
+  fs.renameSync("./i18n-template/locales", "./locales");
+}
 
 // Install the dependencies
 console.log("Installing dependencies...");
-execSync('npm install', { stdio: 'inherit', cwd: path.dirname(projectPackageJsonPath) });
-
-// Move the files and folders out of the i18n-template folder
-console.log('Moving files and folders out of the i18n-template folder...');
-fs.readdirSync('./i18n-template').forEach((file) => {
-  fs.renameSync(`./i18n-template/${file}`, `./${file}`);
+execSync("npm install", {
+  stdio: "inherit",
+  cwd: path.dirname(projectPackageJsonPath),
 });
 
 // Delete the specified files and directories
 console.log("Deleting specified files and directories...");
 [
-  "./package.json",
-  "./package-lock.json",
-  "./node_modules",
-  "./.gitignore",
-  "./install.js",
-  './i18n-template',
+  "./i18n-template",
 ].forEach((path) => {
   if (fs.existsSync(path)) {
     fs.rmSync(path, { recursive: true, force: true });
