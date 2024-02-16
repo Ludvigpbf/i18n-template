@@ -56,6 +56,7 @@ console.log("Deleting specified files and directories...");
   "./locales/node_modules",
   "./locales/.gitignore",
   "./install.js",
+  './i18n-template',
 ].forEach((path) => {
   if (fs.existsSync(path)) {
     fs.rmSync(path, { recursive: true, force: true });
