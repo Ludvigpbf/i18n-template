@@ -20,15 +20,21 @@ node --version && npm --version
 git clone https://github.com/Ludvigpbf/i18n-template.git
 ```
 
-2. Install the dependencies and delete the unnecessary files from the template.
+2. Install the dependencies and delete the unnecessary files from the template by runing this command from the root of your project:
 
 ```bash
-node install.js
+node i18n-template/install.js
 ```
+3. Import the `i18n.tsx` file into your `main.tsx` like this:
+
+```bash
+import "../locales/i18n.tsx";
+```
+#### Modify the path to match your structure!
 
 ### React
 
-If you are using the template in a React project you can delete the following commented lines in the i18n.tsx file.
+If you are using the template in a React project you can delete the following commented lines in the `i18n.tsx` file.
 
 ```
 4. // Uncomment the following line for React Native projects
@@ -44,7 +50,7 @@ and
 
 ### React Native
 
-For React Native projects, uncomment the import statement for react-native-localize and the lng line in the i18n.tsx file.
+For React Native projects, uncomment the import statement for ***react-native-localize*** and the ***lng*** line in the `i18n.tsx` file.
 
 ```
 4. // Uncomment the following line for React Native projects
