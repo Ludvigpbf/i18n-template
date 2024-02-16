@@ -25,7 +25,7 @@ function findPackageJson(startPath) {
 console.log("Reading package.json files...");
 const projectPackageJsonPath = findPackageJson(__dirname);
 const projectPackageJson = require(projectPackageJsonPath);
-const templatePackageJson = require("./i18n-template/package.json");
+const templatePackageJson = require("./package.json");
 
 // Merge the dependencies
 console.log("Merging dependencies...");
