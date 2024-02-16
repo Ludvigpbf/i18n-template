@@ -2,7 +2,7 @@ const fs = require("fs");
 const { execSync } = require("child_process");
 const path = require("path");
 
-console.log("Start install i18n-template...");
+console.log("Initialize i18n-template setup...");
 
 // Function to find package.json in current or parent directories
 function findPackageJson(startPath) {
