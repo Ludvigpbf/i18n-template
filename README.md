@@ -20,7 +20,7 @@ node --version && npm --version
 git clone https://github.com/Ludvigpbf/i18n-template.git
 ```
 
-2. Run the install command to install the dependencies and delete the unnecessary files from the template.
+2. Install the dependencies and delete the unnecessary files from the template.
 ```bash
 node install.js
 ```
