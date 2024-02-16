@@ -1,0 +1,11 @@
+{
+    "name": "i18n-template",
+    "version": "1.0.0",
+    "description": "i18n template for React and React Native projects",
+    "dependencies": {
+        "@types/i18next": "^13.0.0",
+        "i18next": "^20.6.1",
+        "react-i18next": "^11.14.3",
+        "react-native-localize": "^2.1.5"
+    }
+}
