@@ -5,8 +5,8 @@ import { initReactI18next } from "react-i18next";
 // import * as RNLocalize from "react-native-localize";
 
 // Import the translations
-import svTranslation from "./sv";
-import enTranslation from "./en";
+import svTranslation from "./sv/index";
+import enTranslation from "./en/index";
 
 i18n.use(initReactI18next).init({
   resources: {

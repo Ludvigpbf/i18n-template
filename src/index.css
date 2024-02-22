@@ -1,0 +1,57 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+  }
+}
+
+@keyframes endorphine {
+  0% {
+    transform: scale(0) translateX(150%);
+  }
+  100% {
+    transform: scale(20) translateX(200%);
+  }
+}
+/* @keyframes oxytocin {
+  0% {
+    transform: scale(0) translateX(-150%);
+  }
+  100% {
+    transform: scale(20) translateX(-200%);
+  }
+}
+@keyframes dopamine {
+  0% {
+    transform: scale(0) translateX(550%);
+  }
+  100% {
+    transform: scale(20) translateX(1000%);
+  }
+} */
+
+@layer utilities {
+  .animate-endorphine {
+    animation-name: endorphine;
+    animation-duration: 3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: both;
+  }
+  .animate-oxytocin {
+    animation-name: oxytocin;
+    animation-duration: 10s;
+    /* animation-delay: 1s; */
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+  }
+  .animate-dopamine {
+    animation-name: dopamine;
+    animation-duration: 15s;
+    animation-delay: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+  }
+}
